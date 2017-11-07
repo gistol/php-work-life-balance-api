@@ -22,9 +22,9 @@ class TimeStamp
     private $id;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="date", type="integer", unique=true)
+     * @ORM\Column(name="date", type="datetime", unique=true)
      */
     private $date;
 
@@ -63,7 +63,7 @@ class TimeStamp
     /**
      * Set date
      *
-     * @param integer $date
+     * @param \DateTime $date
      *
      * @return TimeStamp
      */
@@ -77,7 +77,7 @@ class TimeStamp
     /**
      * Get date
      *
-     * @return integer
+     * @return \DateTime
      */
     public function getDate()
     {

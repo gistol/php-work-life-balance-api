@@ -38,12 +38,17 @@ class TimeStampController extends Controller
      */
     public function create(Request $request, JSONSerializer $serializer) {
         $timestamp = $serializer->deserialize($request->getContent(), 'AppBundle\Entity\TimeStamp');
-        $timestamp->setDate(strtotime($timestamp->getDate()));
+
+        $now = new \DateTime();
+        // $timestamp->setDate($now->format('Y-m-d H:i:s'));
+        $timestamp->setDate(new \DateTime($timestamp->getDate()));
+        // $timestamp->setDate(strtotime($timestamp->getDate()));
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($timestamp);
 
-        eval(\Psy\sh());
+        echo var_dump($timestamp);
+        // eval(\Psy\sh());
 
         $em->flush();
 
