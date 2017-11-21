@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TimeStamp
+ * Timestamp
  *
- * @ORM\Table(name="time_stamp")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TimeStampRepository")
+ * @ORM\Table(name="timestamp")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TimestampRepository")
  */
-class TimeStamp
+class Timestamp
 {
     /**
      * @var int
@@ -22,32 +22,46 @@ class TimeStamp
     private $id;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="date", type="datetime", unique=true)
+     * @ORM\Column(name="date", type="string", length=255, unique=true)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="start", type="string", length=255)
+     * @ORM\Column(name="start", type="string", length=255, nullable=true)
      */
     private $start;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="pause", type="integer")
+     * @ORM\Column(name="pause", type="string", length=255, nullable=true)
      */
     private $pause;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="finish", type="string", length=255)
+     * @ORM\Column(name="finish", type="string", length=255, nullable=true)
      */
     private $finish;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="unixtime", type="integer", nullable=true)
+     */
+    private $unixtime;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="week", type="integer", nullable=true)
+     */
+    private $week;
 
 
     /**
@@ -63,9 +77,9 @@ class TimeStamp
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param string $date
      *
-     * @return TimeStamp
+     * @return Timestamp
      */
     public function setDate($date)
     {
@@ -77,7 +91,7 @@ class TimeStamp
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDate()
     {
@@ -89,7 +103,7 @@ class TimeStamp
      *
      * @param string $start
      *
-     * @return TimeStamp
+     * @return Timestamp
      */
     public function setStart($start)
     {
@@ -111,9 +125,9 @@ class TimeStamp
     /**
      * Set pause
      *
-     * @param integer $pause
+     * @param string $pause
      *
-     * @return TimeStamp
+     * @return Timestamp
      */
     public function setPause($pause)
     {
@@ -125,7 +139,7 @@ class TimeStamp
     /**
      * Get pause
      *
-     * @return int
+     * @return string
      */
     public function getPause()
     {
@@ -137,7 +151,7 @@ class TimeStamp
      *
      * @param string $finish
      *
-     * @return TimeStamp
+     * @return Timestamp
      */
     public function setFinish($finish)
     {
@@ -155,4 +169,53 @@ class TimeStamp
     {
         return $this->finish;
     }
+
+    /**
+     * Set unixtime
+     *
+     * @param integer $unixtime
+     *
+     * @return Timestamp
+     */
+    public function setUnixtime($unixtime)
+    {
+        $this->unixtime = $unixtime;
+
+        return $this;
+    }
+
+    /**
+     * Get unixtime
+     *
+     * @return int
+     */
+    public function getUnixtime()
+    {
+        return $this->unixtime;
+    }
+
+    /**
+     * Set week
+     *
+     * @param integer $week
+     *
+     * @return Timestamp
+     */
+    public function setWeek($week)
+    {
+        $this->week = $week;
+
+        return $this;
+    }
+
+    /**
+     * Get week
+     *
+     * @return int
+     */
+    public function getWeek()
+    {
+        return $this->week;
+    }
 }
+
